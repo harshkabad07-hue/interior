@@ -57,7 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
     propWidth.value = Math.round(activeObj.width * activeObj.scaleX);
     propHeight.value = Math.round(activeObj.height * activeObj.scaleY);
     propRotation.value = Math.round(activeObj.angle);
-    propColor.value = activeObj.fill || '#4F46E5';
+    
+    let color = '#4F46E5';
+    if (activeObj.type === 'group' && activeObj.item(0)) {
+      color = activeObj.item(0).fill;
+    } else {
+      color = activeObj.fill;
+    }
+    propColor.value = color;
   }
 
   // Handle properties changes
@@ -88,7 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
   propColor.addEventListener('input', (e) => {
     const activeObj = canvas.getActiveObject();
     if (activeObj) {
-      activeObj.set({ fill: e.target.value });
+      if (activeObj.type === 'group' && activeObj.item(0)) {
+        activeObj.item(0).set({ fill: e.target.value });
+      } else {
+        activeObj.set({ fill: e.target.value });
+      }
       canvas.renderAll();
     }
   });
@@ -132,10 +143,11 @@ document.addEventListener('DOMContentLoaded', () => {
   dropzone.addEventListener('drop', (e) => {
     e.preventDefault();
     
-    // Get drop coordinates relative to canvas
-    const rect = canvasElement.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    // Get drop coordinates using Fabric's built-in pointer method
+    // This correctly handles canvas offsets, scrolling, and scaling
+    const pointer = canvas.getPointer(e);
+    const x = pointer.x;
+    const y = pointer.y;
 
     addFurnitureToCanvas(draggedItemType, x, y);
   });
@@ -227,14 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
       padding: 5
     });
 
-    // Override fill property for the group to modify the rect
-    Object.defineProperty(group, 'fill', {
-      get: function() { return this.item(0).fill; },
-      set: function(val) { this.item(0).set('fill', val); }
-    });
-
     canvas.add(group);
     canvas.setActiveObject(group);
+    canvas.renderAll();
   }
 
   // Clear Canvas
