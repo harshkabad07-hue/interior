@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Interior Design UI - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      Virtual Interior
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="design.html">Design</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+    <div class="auth-buttons">
+      <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; margin-right: 0.5rem;">Log In</a>
+      <a href="#" class="btn btn-primary" style="padding: 0.5rem 1rem;">Sign Up</a>
+    </div>
+  </nav>
+
+  <main class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Design Your <span>Dream Room</span> in Minutes</h1>
+      <p class="hero-subtitle">
+        Unleash your creativity with our intuitive virtual interior design tool. 
+        Drag, drop, and visualize your perfect space before making it a reality.
+      </p>
+      <a href="design.html" class="btn btn-primary" style="font-size: 1.125rem; padding: 1rem 2rem;">
+        Start Designing
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+    <div class="hero-image-wrapper">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Beautiful minimal interior" class="hero-image">
+      <div class="floating-card">
+        <div style="width: 40px; height: 40px; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h4 style="font-size: 0.875rem;">Real-time preview</h4>
+          <p style="font-size: 0.75rem; color: var(--text-muted);">See changes instantly</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
